@@ -12,8 +12,8 @@ class Song < ActiveRecord::Base
     # Hint: you won't want to create an artist record every time this method is called, only if an Drake is *not found*
     # binding.pry
     
-    drake = Artist.create(name: "Drake")
-    drake.songs << self
+    drake = Artist.find_or_create_by(name: 'Drake')
+    self.artist = drake
     # push song into drake.songs array unless it is in there already
   end
 end
