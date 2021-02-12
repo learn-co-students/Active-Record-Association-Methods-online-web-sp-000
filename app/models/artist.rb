@@ -10,12 +10,13 @@ class Artist < ActiveRecord::Base
 
   def song_count
     #return the number of songs associated with the artist
-     Song.all.where("artist_id = ?", id).size
-
+    #Song.all.where("artist_id = ?", id).size
+    songs.size
   end
 
   def genre_count
     #return the number of genres associated with the artist
-    Song.all.where("artist_id = ?", id).size
+    # Song.all.where("artist_id = ?", id).size
+    genres.size
   end
 end
