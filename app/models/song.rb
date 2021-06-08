@@ -1,14 +1,25 @@
+require 'pry'
 class Song < ActiveRecord::Base
   belongs_to :artist
   belongs_to :genre
 
   def get_genre_name
+    self.genre.name
   end
 
   def drake_made_this
-    # when this method is called it should assign the song's artist to Drake
-    # Drake doesn't exist in the database as an artist yet, so you'll have to create a record
-    # Hint: you won't want to create an artist record every time this method is called, only if an Drake is *not found*
-
-  end
+      #drake = Artist.new(id:1, name:"Drake")
+      #1. Check to see if Drake exists in the database as an artist 
+       #binding.pry
+      # if Artist.find_by(name:"Drake") 
+      #   #3.If Drake is found as an artist, then assign Drake as the song's Artist
+      #     self.artist = drake
+      # else 
+      #   #2. If Drake is not found, create Drake in the Artist database
+      #       drake = Artist.new(id:1, name:"Drake")
+      # end 
+      
+      drake = Artist.find_or_create_by(name:"Drake")
+      self.artist = drake
 end
+end 
